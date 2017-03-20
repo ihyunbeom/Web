@@ -1,9 +1,12 @@
+doctype html
 html
   head
-    title= title
+    meta(charset='utf-8')
   body
-    h1 Hello Jade
-    ul
-      -for(var i=0; i<5; i++)
-        li coding
-    div= time
+    form(action='/form_receiver')
+      p
+        input(type='text')
+      p
+        textarea
+      p
+        input(type='submit')
