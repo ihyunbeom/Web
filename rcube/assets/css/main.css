@@ -2198,7 +2198,7 @@
 
 		.box.person {
 			border: solid 1px rgba(255, 255, 255, 0.25);
-			padding: 3em 1.5em;
+			padding: 1em 1em;
 		}
 
 			.box.person h3 {
@@ -2940,12 +2940,12 @@
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		text-align: center;
-		
+
 	}
 
 		#banner h1 {
 			font-size: 3.5em;
-			font-weight: 100;
+			font-weight: 800;
 			color: #fff;
 			line-height: 1em;
 			margin: 0 0 0.5em 0;

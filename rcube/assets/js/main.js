@@ -64,3 +64,8 @@
 	});
 
 })(jQuery);
+
+function openHufs()
+{
+window.open("http://www.hufs.ac.kr", "startpop", "top=0, left=0, width=800, height=500, scrollbars=no, resizable=no ,status=no ,toolbar=no");
+}
