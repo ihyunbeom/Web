@@ -1972,7 +1972,7 @@
 		@media screen and (max-width: 480px) {
 
 			.flex.flex-4 .box {
-				width: 100%;
+				width: 50%;
 			}
 
 		}
