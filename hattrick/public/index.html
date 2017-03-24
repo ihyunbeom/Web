@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>축구 통합 매칭서비스 해트트릭</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<meta property="og:type" content="분류(website,article..)">
+		<meta property="og:title" id="ogtitle" content="해트트릭" />
+		<meta property="og:description" id="ogdesc" content="축구 통합 매칭서비스" />
+		<meta property="og:image" id="ogimg" content="css/images/banner.jpg"/>
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+		<link rel="stylesheet" href="css/main.css" />
+
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class='logo'>해트트릭</a>
+						<a href="notice.html">서비스 안내</a>
+						<a href="members.html">조직 구성</a>
+				</div>
+			</header>
+
+		<!-- Banner -->
+			<section id="banner">
+				<p>스포츠 통합 매칭 서비스</p>
+				<h1>해 트 트 릭</h1>
+				<p>팀매칭 용병매칭 경기장대관</p>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper">
+				<div class="inner">
+					<div class="flex flex-3">
+						<article>
+
+							<body>
+								<div id="kakao-logged-group"></div>
+								<div id="kakao-profile"></div>
+							</body>
+
+						</article>
+					</div>
+				</div>
+					<div class="inner">
+						<div class="flex flex-3">
+							<article>
+								<header>
+                  <header>
+    								<h3>제1회 해트트릭 풋살대회<br />대회일: 2017.06.03</h3>
+    							</header>
+    							<p>장소: 애스빌드 풋살파크(수원시 팔달구)</p>
+                    <ul class="actions">
+    									<li><a href="#" class="button special">참가 신청</a></li>
+    								</ul>
+							</article>
+							<article>
+                <header>
+                  <h3>오늘의 매칭 정보</br>(회원 전용)</h3>
+
+    								<a id="kakao-login-btn"></a>
+    								<a href="http://developers.kakao.com/logout"></a>
+    								<script type='text/javascript'>
+    								//dbda42241d81b2109a7b44fb499d5bf8
+    								  //<![CDATA[
+    								    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    								    Kakao.init('dbda42241d81b2109a7b44fb499d5bf8');
+    								    // 카카오 로그인 버튼을 생성합니다.
+    										Kakao.Auth.createLoginButton({
+    							      container: '#kakao-login-btn',
+    							      success: function(authObj) {
+    											Kakao.API.request({
+    						          url: '/v1/user/me',
+    						          success: function(res) {
+    						            alert(JSON.stringify(res));
+    												alert('Hello'+res.properties.nickname);
+    						          },
+    						          fail: function(error) {
+    						            alert(JSON.stringify(error));
+    						          }
+    						        });
+    						      },
+    							      fail: function(err) {
+    							         alert(JSON.stringify(err));
+    							      }
+    							    });
+    									var refreshToken = Kakao.Auth.getRefreshToken();
+    									Kakao.Auth.setAccessToken(accessTokenFromServer);
+
+    								  //]]>
+    								</script>
+    							</header>
+                  <ul class="actions">
+                    <li><a href="list.html" class="button special">매칭 신청</a></li>
+                  </ul>
+							</article>
+              <article>
+                <header>
+                  <h3>경기장 대관 안내</br>(서비스 준비중 입니다.)</h3>
+                </header>
+                <p>풋살장 / 축구장</p>
+                  <ul class="actions">
+                    <li><a href="#" class="button special">대관 안내</a></li>
+                  </ul>
+							</article>
+						</div>
+					</div>
+				</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="copyright">
+							&copy; HatTrick. Design: hyunbeom & <a href="https://templated.co/">Templated</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+						</div>
+						<ul class="icons">
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+							<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+							<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBH7265FLz12OoAWdPn1rd5qP7mJ4up3Fs",
+          authDomain: "hat-trick-4f2d0.firebaseapp.com",
+          databaseURL: "https://hat-trick-4f2d0.firebaseio.com",
+          storageBucket: "hat-trick-4f2d0.appspot.com",
+          messagingSenderId: "130178152360"
+        };
+        firebase.initializeApp(config);
+      </script>
+
+
+	</body>
+</html>
