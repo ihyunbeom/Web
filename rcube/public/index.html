@@ -1,18 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>R-Cube 2017</title>
+		<title>창업기술학회 R-Cube 입니다.</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<meta property="og:type" content="분류(website,article..)">
+		<meta property="og:title" id="ogtitle" content="R-Cube 2017" />
+		<meta property="og:description" id="ogdesc" content="창업기술학회 R-Cube 입니다." />
+		<meta property="og:image" id="ogimg" content="images/banner.jpg"/>
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
+
 	</head>
 	<body class="subpage">
 
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="index.html" class="logo">R-Cube</a>
+					<a href="index.html" class='logo'>RCube</a>
 						<a href="index.html">Home</a>
 						<a href="generic.html">R-cube</a>
 						<a href="table.html">2017</a>
@@ -32,6 +38,44 @@
 				<div class="inner">
 					<div class="flex flex-3">
 						<article>
+							<header>
+								<a id="kakao-login-btn"></a>
+								<a href="http://developers.kakao.com/logout"></a>
+								<script type='text/javascript'>
+								//dbda42241d81b2109a7b44fb499d5bf8
+								  //<![CDATA[
+								    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+								    Kakao.init('dbda42241d81b2109a7b44fb499d5bf8');
+								    // 카카오 로그인 버튼을 생성합니다.
+										Kakao.Auth.createLoginButton({
+							      container: '#kakao-login-btn',
+							      success: function(authObj) {
+											Kakao.API.request({
+						          url: '/v1/user/me',
+						          success: function(res) {
+						            alert(JSON.stringify(res));
+												alert('Hello'+res.properties.nickname);
+						          },
+						          fail: function(error) {
+						            alert(JSON.stringify(error));
+						          }
+						        });
+						      },
+							      fail: function(err) {
+							         alert(JSON.stringify(err));
+							      }
+							    });
+									var refreshToken = Kakao.Auth.getRefreshToken();
+									Kakao.Auth.setAccessToken(accessTokenFromServer);
+
+								  //]]>
+								</script>
+							</header>
+							<body>
+								<div id="kakao-logged-group"></div>
+								<div id="kakao-profile"></div>
+							</body>
+
 							<header>
 								<h3>2017 Recruiting new members.<br />2017.03.02 ~ 2017.03.17</h3>
 							</header>
