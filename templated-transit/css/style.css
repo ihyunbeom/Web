@@ -732,14 +732,15 @@
 
 		table td {
 			padding: 0.75em 0.75em;
+			text-align: center;
 		}
 
 		table th {
 			color: #474747;
 			font-size: 0.9em;
 			font-weight: 700;
-			padding: 0 0.75em 0.75em 0.75em;
-			text-align: left;
+			padding: 0 0.75em 0.75em 0.35em;
+			text-align: center;
 		}
 
 		table thead {
@@ -830,12 +831,12 @@
 			padding-left: 1.35em;
 		}
 
-			input[type="submit"].icon:before,
-			input[type="reset"].icon:before,
-			input[type="button"].icon:before,
-			.button.icon:before {
-				margin-right: 0.5em;
-			}
+		input[type="submit"].icon:before,
+		input[type="reset"].icon:before,
+		input[type="button"].icon:before,
+		.button.icon:before {
+			margin-right: 0.5em;
+		}
 
 		input[type="submit"].fit,
 		input[type="reset"].fit,
@@ -1031,7 +1032,7 @@
 /* Banner */
 
 	#banner {
-		background-image: url(../images/dark_tint.png), url(../images/bokeh_car_lights_bg.jpg);
+		background-image: url(../images/dark_tint.png), url(../images/banner.jpg);
 		background-position: center center;
 		background-size: cover;
 		color: #ffffff;
