@@ -1,2 +1,2 @@
 # Web
-node.js ,firebase, js 이용한 웹 개발
+node.js ,firebase, jsp, spring 웹 개발 
