@@ -4,7 +4,6 @@ package com.spring.bbs.controller;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +23,14 @@ public class UserController {
 	
 	UserCommand command = null;
 	
+	@RequestMapping("/")
+	public String index(Model model) {
+		
+		return "home";
+	}
+	
 	@RequestMapping("home")
-	public String home(Locale locale, Model model) {
+	public String home(Model model) {
 		
 		return "home";
 	}
