@@ -4,6 +4,6 @@ import org.springframework.ui.Model;
 
 public interface UserCommand {
 	
-	void execute(Model model);
+	int execute(Model model);
 
 }
