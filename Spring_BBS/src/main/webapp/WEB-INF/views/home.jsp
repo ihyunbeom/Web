@@ -10,7 +10,7 @@
 </head>
 <body>
 		<%
-				String userID = "Guest";
+				String userID = null;
 				if(session.getAttribute("id") != null){
 					userID = (String) session.getAttribute("id");
 				}		
@@ -32,7 +32,7 @@
 								<li><a href="list">게시판</a></li>
 						</ul>
 						<%
-								if(userID.equals("Guest")){
+								if(userID == null){
 						%>
 						<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">

@@ -8,6 +8,21 @@ public class UserDTO {
 	private String userGender;
 	private String userCreated;
 	private String userTel;
+	
+	public UserDTO(){
+		
+	}
+	
+	public UserDTO(String email, String password, String name, String gender, String created, String tel){
+		this.userEmail = email;
+		this.userPassword = password;
+		this.userName = name;
+		this.userGender = gender;
+		this.userCreated = created;
+		this.userTel = tel;	
+		
+	}
+	
 	public String getUserEmail() {
 		return userEmail;
 	}

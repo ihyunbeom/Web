@@ -13,9 +13,9 @@ public class BbsListCommand implements BbsCommand {
 	public void execute(Model model) {
 		// TODO Auto-generated method stub
 		
-		BbsDAO dao = new BbsDAO();
-		ArrayList<BbsDTO> dtos = dao.getList();
-		model.addAttribute("list", dtos);
+		BbsDAO bbsDAO = new BbsDAO();
+		ArrayList<BbsDTO> bbsDTO = bbsDAO.getList();
+		model.addAttribute("list", bbsDTO);
 
 	}
 

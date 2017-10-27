@@ -32,7 +32,7 @@
 								<li><a href="list">게시판</a></li>
 						</ul>
 						<%
-								if(userID == "Guest"){
+								if(userID == null){
 						%>
 						<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
@@ -63,7 +63,9 @@
 						%>
 				</div>
 		</nav>
-		
+		<%
+				if(userID != null){
+		%>
 		<div class="container">
 				<div class="row">
 				<form method="post" action="writeAction">
@@ -88,7 +90,15 @@
 						
 				</div>
 		</div>
-		
+		<%
+				} else {
+		%>
+		<div class="container">
+				<h1>로그인 후 이용해주세요.</h1>
+		</div>
+		<%
+				}
+		%>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="resources/js/bootstrap.js"></script>
 </body>

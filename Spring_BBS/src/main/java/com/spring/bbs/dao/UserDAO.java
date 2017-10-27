@@ -22,6 +22,20 @@ public class UserDAO {
 		}
 	}
 	
+	public String getDate(){
+		String SQL = "SELECT NOW()";
+		try{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				return rs.getString(1);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return "";//데이터베이스 오류
+	}
+	
 	public int login(String userEmail, String userPassword) {
 		String  SQL = "SELECT userPassword FROM USER WHERE userEmail = ?";
 		try {
@@ -50,7 +64,7 @@ public class UserDAO {
 			pstmt.setString(2, user.getUserPassword());
 			pstmt.setString(3, user.getUserName());
 			pstmt.setString(4, user.getUserGender());
-			pstmt.setString(5, user.getUserCreated());
+			pstmt.setString(5, getDate());
 			pstmt.setString(6, user.getUserTel());
 			return pstmt.executeUpdate();
 		}catch(Exception e) {

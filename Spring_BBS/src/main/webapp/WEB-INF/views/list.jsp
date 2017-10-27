@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
 		<%
-				String userID = "Guest";
+				String userID = null;
 				if(session.getAttribute("id") != null){
 					userID = (String) session.getAttribute("id");
 				}		
@@ -32,7 +33,7 @@
 								<li><a href="list">게시판</a></li>
 						</ul>
 						<%
-								if(userID.equals("Guest")){
+								if(userID == null){
 						%>
 						<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
@@ -63,29 +64,37 @@
 						%>
 				</div>
 		</nav>
-		
+		session id : ${id}
 		<div class="container">
 				<div class="row">
 						<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 								<thead>
 										<tr>
 												<th style="background-color: #eeeeee; text-align: center;">번호</th>
-												<th style="background-color: #eeeeee; text-align: center;">제목</th>
 												<th style="background-color: #eeeeee; text-align: center;">작성자</th>
+												<th style="background-color: #eeeeee; text-align: center;">제목</th>
 												<th style="background-color: #eeeeee; text-align: center;">작성일</th>
 										</tr>
 								</thead>
 								<tbody>
+										<c:forEach items="${list}" var="dto">
 										<tr>
-												<td>1024</td>												
-												<td>Title</td>
-												<td>Writer</td>
-												<td>Created</td>
+											<td>${dto.bbsID}</td>
+											<td>${dto.userEmail}</td>
+											<td>												
+												<a href="view?bbsID=${dto.bbsID}">${dto.bbsTitle}</a></td>
+											<td>${dto.bbsCreated}</td>											
 										</tr>
+										</c:forEach>
 								</tbody>
 						</table>
-						
+						<%
+								if(userID != null){
+						%>
 						<a href="write" class="btn btn-primary pull-right">글쓰기</a>
+						<%
+								}
+						%>
 				</div>
 		</div>
 		

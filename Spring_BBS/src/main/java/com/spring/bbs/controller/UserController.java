@@ -1,9 +1,12 @@
 package com.spring.bbs.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.bbs.command.UserCommand;
+import com.spring.bbs.command.UserJoinCommand;
 import com.spring.bbs.command.UserLoginCommand;
 
 /**
@@ -45,32 +49,43 @@ public class UserController {
 	}
 	
 	@RequestMapping("/loginAction")
-	public String loginAction(HttpServletRequest request, Model model) {
+	public String loginAction(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		System.out.println("loginAction()");
 		
 		model.addAttribute("request", request);
 		command = new UserLoginCommand();
 		int result = command.execute(model);
 		
-		if(result == 1){//ë¡œê·¸ì¸ ì„±ê³µ
-			System.out.println("ë¡œê·¸ì¸ ì„±ê³µ ");
+		if(result == 1){
+			System.out.println("Login Success!!! ");
 			
 			model.addAttribute("id", request.getParameter("userEmail"));
-	        //session ê°ì²´ì— adminì´ë¼ëŠ” ê°’ì„ idë¼ëŠ” í‚¤ë¡œ ì €ì¥
 	        
 			return "home";
 			
 		}
 		else if(result == 0){
-			System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨ " + result + "íŒ¨ìŠ¤ì›Œë“œ ì˜¤ë¥˜ ");
+			System.out.println("Error : " + result );
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇÏ¼¼¿ä.');history.back();</script>");
+			out.flush();
 			return "login";
 		}
 		else if(result == -1){
-			System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨ " + result + "ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì•„ì´ë””" );
+			System.out.println("Error : " + result );
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµğÀÔ´Ï´Ù.');history.back();</script>");
+			out.flush();
 			return "login";
 		}
 		else if(result == -2){
-			System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨ " + result + "ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜ ");
+			System.out.println("Error : " + result );
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');history.back();</script>");
+			out.flush();
 			return "login";
 		}
 		
@@ -81,9 +96,54 @@ public class UserController {
 	@RequestMapping("/logoutAction")
 	public String logoutAction(Model model, SessionStatus session) {
 		System.out.println("logoutAction()");
-		model.addAttribute("id", "Guest");
 		session.setComplete();
 		
+		return "home";
+		
+	}
+	@RequestMapping("/join")
+	public String join(Model model) {
+		System.out.println("join()");
+		
+		return "join";
+		
+	}
+	
+	@RequestMapping("/joinAction")
+	public String joinAction(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		System.out.println("joinAction()");
+		model.addAttribute("request", request);
+		command = new UserJoinCommand();
+		int result = command.execute(model);
+		
+		
+		if(result == -2){
+			System.out.println("Error : " + result );
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('ÀÔ·ÂÀÌ ¾È µÈ »çÇ×ÀÌ ÀÖ½À´Ï´Ù.'); history.back();</script>");
+			out.flush();
+					
+				}
+				else {
+						if(result == -1){
+							System.out.println("Error : " + result );					
+							response.setContentType("text/html; charset=UTF-8");
+				            PrintWriter out = response.getWriter();
+				            out.println("<script>alert('ÀÌ¹Ì Á¸ÀçÇÏ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.'); history.back();</script>");
+							out.flush();
+				           
+						}
+						else {
+							
+							model.addAttribute("id", request.getParameter("userEmail"));
+							response.setContentType("text/html; charset=UTF-8");
+				            PrintWriter out = response.getWriter();
+				            out.println("<script>alert('¼º°øÀûÀ¸·Î °¡ÀÔµÇ¾ú½À´Ï´Ù.');location.href = 'home';</script>");
+							out.flush();
+							
+						} 
+				}
 		return "home";
 		
 	}
