@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.bbs.command.UserCommand;
 import com.spring.bbs.command.UserLoginCommand;
@@ -78,9 +79,10 @@ public class UserController {
 	}
 	
 	@RequestMapping("/logoutAction")
-	public String logoutAction(Model model) {
+	public String logoutAction(Model model, SessionStatus session) {
 		System.out.println("logoutAction()");
 		model.addAttribute("id", "Guest");
+		session.setComplete();
 		
 		return "home";
 		
