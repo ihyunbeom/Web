@@ -19,3 +19,33 @@ bbsContent varchar(2048),
 bbsAvailable int,
 PRIMARY KEY(bbsID)
 );
+
+__________________________________R-Cube____________________________________
+CREATE TABLE user(
+userId int,
+userEmail varchar(20),
+userPassword varchar(20),
+userState int,
+PRIMARY KEY(userId)
+);
+
+CREATE TABLE user_info(
+userId int,
+userName varchar(20),
+userBirth varchar(10),
+userGender varchar(10),
+userTel varchar(20),
+studentNumber varchar(20),
+userMajor varchar(30),
+userCreated varchar(50),
+userGrade varchar(10),
+FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
+);
+
+
+
+
+
+
+
+

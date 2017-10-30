@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width-device-width", initial-scale="1">
 <link rel="stylesheet" href="resources/css/bootstrap.css">
-<title>Spring 게시판 웹 사이트</title>
+<title>R-Cube 기술창업학회</title>
 </head>
 <body>
 		<%
@@ -16,6 +16,7 @@
 				}		
 		%>
 		<nav class="navbar navbar-default">
+		<div class="container">
 				<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" 
 						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" 
@@ -24,7 +25,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>		
 						</button>
-						<a class="navbar-brand" href="home">JSP 게시판 웹 사이트</a>
+						<a class="navbar-brand" href="home">R-Cube</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
@@ -62,13 +63,14 @@
 								}
 						%>
 				</div>
+				</div>
 		</nav>
 		
 		<div class="container">
 				<div class="jumbotron">
 						<div class="container">
-								<h1>웹 사이트 소개</h1>
-								<p>Spring 웹 사이트입니다.</p>
+								<h1>R - Cube</h1>
+								<p>기술창업학회</p>
 								<p><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기</a></p>								
 								
 								session id : ${id}

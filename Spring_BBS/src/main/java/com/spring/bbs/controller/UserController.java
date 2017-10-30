@@ -96,7 +96,11 @@ public class UserController {
 	@RequestMapping("/logoutAction")
 	public String logoutAction(Model model, SessionStatus session) {
 		System.out.println("logoutAction()");
+		
+		model.addAttribute("id", "");
+		
 		session.setComplete();
+		
 		
 		return "home";
 		
