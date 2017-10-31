@@ -16,20 +16,24 @@ public class UserJoinCommand implements UserCommand {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String userId = request.getParameter("userId");
 		String userEmail = request.getParameter("userEmail");
 		String userPassword = request.getParameter("userPassword");
 		String userName = request.getParameter("userName");
 		String userGender = request.getParameter("userGender");
-		String userCreated = request.getParameter("userCreated");
 		String userTel = request.getParameter("userTel");
+		int userGrade = 0; //가입신청
+		String userCreated = request.getParameter("userCreated");
 		
+		UserDTO user=null;
+		if(userId.equals("") || userEmail.equals("") || userPassword.equals("") || 
+				userName.equals("") || userGender.equals("") || userTel.equals("")){	
 		
-		UserDTO user = new UserDTO(userEmail,userPassword,userName,userGender,userCreated,userTel);
-		
-		if(user.getUserEmail().equals("") || user.getUserPassword().equals("") || 
-				user.getUserName().equals("") || user.getUserGender().equals("") || user.getUserTel().equals("")){
 			return -2;
+			
 		}else{
+			user = new UserDTO(userId, userEmail,userPassword,userName,userGender,userTel,userGrade,userCreated);
 			UserDAO dao = new UserDAO();
 			
 			return dao.join(user);

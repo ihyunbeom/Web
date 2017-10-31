@@ -2,26 +2,49 @@ package com.spring.bbs.dto;
 
 public class UserDTO {
 	
-	private String userEmail;
+	private String userId; //학번
+	private String userEmail;//로그인 id 
 	private String userPassword;
 	private String userName;
 	private String userGender;
-	private String userCreated;
 	private String userTel;
+	private int userGrade; //0:가입신청 1:신입회원 2:일반회원 3:부관리자 4:관리자(학회장) 5:최고관리자(개발자)
+	private String userCreated;//가입일
 	
-	public UserDTO(){
-		
-	}
 	
-	public UserDTO(String email, String password, String name, String gender, String created, String tel){
+	public UserDTO(String id, String email, String password, String name, String gender, String tel, int grade, String created){
+		this.userId = id;
 		this.userEmail = email;
 		this.userPassword = password;
 		this.userName = name;
 		this.userGender = gender;
+		this.userTel = tel;
+		this.userGrade = grade;
 		this.userCreated = created;
-		this.userTel = tel;	
+			
 		
 	}
+	public UserDTO(){
+		
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public int getUserGrade() {
+		return userGrade;
+	}
+
+	public void setUserGrade(int userGrade) {
+		this.userGrade = userGrade;
+	}
+
+	
 	
 	public String getUserEmail() {
 		return userEmail;

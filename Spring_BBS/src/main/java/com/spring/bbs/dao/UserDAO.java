@@ -8,6 +8,7 @@ public class UserDAO {
 	
 	private Connection conn;
 	private PreparedStatement pstmt;
+	private PreparedStatement pstmt_pw;
 	private ResultSet rs;
 	
 	public UserDAO() {
@@ -33,20 +34,29 @@ public class UserDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return "";//데이터베이스 오류
+		return "";
 	}
 	
 	public int login(String userEmail, String userPassword) {
-		String  SQL = "SELECT userPassword FROM USER WHERE userEmail = ?";
+		String  SQL = "SELECT userId FROM USER WHERE userEmail = ?";
+		String  SQL_pw = "SELECT userPassword FROM PW WHERE userId = ?";
+		
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userEmail);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				if(rs.getString(1).equals(userPassword))
-					return 1;
-				else 
-					return 0;
+				pstmt_pw = conn.prepareStatement(SQL_pw);
+				pstmt_pw.setString(1, rs.getString(1));
+				rs = pstmt_pw.executeQuery();
+			
+				if(rs.next()) {
+					if(rs.getString(1).equals(userPassword))
+						return 1;
+					else 
+						return 0;
+				}
+				return -1;
 			}
 			return -1;
 			
@@ -57,16 +67,23 @@ public class UserDAO {
 	}
 	
 	public int join(UserDTO user) {
-		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?, ?, ?)";
+		String SQL_pw = "INSERT INTO PW VALUES(?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserEmail());
-			pstmt.setString(2, user.getUserPassword());
+			pstmt.setString(1, user.getUserId());
+			pstmt.setString(2, user.getUserEmail());
 			pstmt.setString(3, user.getUserName());
 			pstmt.setString(4, user.getUserGender());
-			pstmt.setString(5, getDate());
-			pstmt.setString(6, user.getUserTel());
-			return pstmt.executeUpdate();
+			pstmt.setString(5, user.getUserTel());
+			pstmt.setInt(6, user.getUserGrade());
+			pstmt.setString(7, getDate());
+			if(pstmt.executeUpdate() == 1){				
+				pstmt_pw = conn.prepareStatement(SQL_pw);
+				pstmt_pw.setString(1, user.getUserId());
+				pstmt_pw.setString(2, user.getUserPassword());
+			}			
+			return pstmt_pw.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

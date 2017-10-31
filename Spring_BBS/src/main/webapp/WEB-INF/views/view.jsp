@@ -96,8 +96,18 @@
 									</tr>									
 							</tbody>						
 					</table>
-					<a href="list" class="btn btn-primary">목록</a>
 					
+					
+					<form method="post" action="update">
+						<a href="list" class="btn btn-primary">목록</a>
+						
+						
+						<c:if test="${sessionScope.id == view.userEmail}">
+							<a href="update?bbsID=${view.bbsID}" class="btn btn-primary">수정</a>
+							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction" class="btn btn-primary">삭제</a>
+	    				
+	    				</c:if>
+    				</form>
 				</div>
 		</div>
 		

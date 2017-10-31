@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.bbs.command.BbsCommand;
+import com.spring.bbs.command.BbsDeleteCommand;
 import com.spring.bbs.command.BbsListCommand;
 import com.spring.bbs.command.BbsUpdateCommand;
 import com.spring.bbs.command.BbsViewCommand;
@@ -54,7 +55,7 @@ public class BbsController {
 	public String content_view(HttpServletRequest request, Model model){
 		System.out.println("view()");
 		
-		
+		HttpSession ses=request.getSession();
 		model.addAttribute("request", request);
 		int bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		
@@ -64,12 +65,42 @@ public class BbsController {
 		return "view";
 	}
 	
-	@RequestMapping(value="/update", method=RequestMethod.POST )
-	public String modify(HttpServletRequest request, Model model){
+	@RequestMapping("/update")
+	public String update(HttpServletRequest request, Model model) {
 		System.out.println("update()");
 		
+		int bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		model.addAttribute("request", request);
-		command = new BbsUpdateCommand();
+		System.out.println("BbsID : " + bbsID);
+		command = new BbsViewCommand(bbsID);
+		command.execute(model);
+		
+		
+		return "update";
+	}
+	
+	@RequestMapping(value="/updateAction", method=RequestMethod.POST )
+	public String updateAction(HttpServletRequest request, Model model){
+		System.out.println("updateAction()");
+		
+		HttpSession ses=request.getSession();
+		
+		model.addAttribute("request", request);
+		int bbsID = Integer.parseInt(request.getParameter("bbsID"));
+		System.out.println("[updateAction] id : " + ses.getAttribute("id").toString()+" bbsID : " + bbsID);
+
+		command = new BbsUpdateCommand(ses.getAttribute("id").toString(), bbsID);
+		command.execute(model);
+		
+		return "redirect:list";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		System.out.println("delete()");
+		
+		model.addAttribute("request", request);
+		command = new BbsDeleteCommand();
 		command.execute(model);
 		
 		return "redirect:list";

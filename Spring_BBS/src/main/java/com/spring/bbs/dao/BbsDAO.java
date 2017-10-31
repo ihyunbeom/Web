@@ -56,7 +56,7 @@ public class BbsDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return "";//데이터베이스 오류
+		return "";
 	}
 	
 	
@@ -107,7 +107,7 @@ public class BbsDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return -1; //데이터베이스 오류
+		return -1; 
 	}
 	
 	public BbsDTO getBbs(int strID){
@@ -149,7 +149,7 @@ public class BbsDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return -1; //데이터베이스 오류
+		return -1; 
 	}
 	
 	public int delete(int bbsID){
@@ -162,7 +162,7 @@ public class BbsDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return -1; //데이터베이스 오류
+		return -1; 
 	}
 	
 	/*

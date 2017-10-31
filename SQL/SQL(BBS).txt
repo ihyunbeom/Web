@@ -1,24 +1,32 @@
 CREATE TABLE USER(
+userId varchar(20),
 userEmail varchar(20),
-userPassword varchar(20),
 userName varchar(20),
 userGender varchar(10),
-userCreated varchar(50),
 userTel varchar(20),
-PRIMARY KEY(userEmail)
+userGrade int,
+userCreated varchar(50),
+PRIMARY KEY(userId)
 );
 
-INSERT INTO USER VALUES('ccc@ccc','ccc','CCC','male','2017-10-27','010-1234-5678');
+CREATE TABLE PW(
+userId varchar(20),
+userPassword varchar(20),
+PRIMARY KEY(userId)
+);
 
 CREATE TABLE BBS(
-bbsID int,
+bbsId int(11),
 bbsTitle varchar(50),
 userEmail varchar(20),
 bbsCreated varchar(50),
 bbsContent varchar(2048),
-bbsAvailable int,
-PRIMARY KEY(bbsID)
+PRIMARY KEY(bbsId)
 );
+
+INSERT INTO USER VALUES('ccc@ccc','ccc','CCC','male','2017-10-27','010-1234-5678');
+
+
 
 __________________________________R-Cube____________________________________
 CREATE TABLE user(
