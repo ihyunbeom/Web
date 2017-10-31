@@ -58,6 +58,10 @@ public class UserController {
 		
 		if(result == 1){
 			System.out.println("Login Success!!! ");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('ì„±ê³µì ìœ¼ë¡œ ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.');</script>");
+			out.flush();
 			
 			model.addAttribute("id", request.getParameter("userEmail"));
 	        
@@ -68,7 +72,7 @@ public class UserController {
 			System.out.println("Error : " + result );
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇÏ¼¼¿ä.');history.back();</script>");
+			out.println("<script>alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•˜ì„¸ìš”.');history.back();</script>");
 			out.flush();
 			return "login";
 		}
@@ -76,7 +80,7 @@ public class UserController {
 			System.out.println("Error : " + result );
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµğÀÔ´Ï´Ù.');history.back();</script>");
+			out.println("<script>alert('ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.');history.back();</script>");
 			out.flush();
 			return "login";
 		}
@@ -84,7 +88,7 @@ public class UserController {
 			System.out.println("Error : " + result );
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');history.back();</script>");
+			out.println("<script>alert('ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');history.back();</script>");
 			out.flush();
 			return "login";
 		}
@@ -125,7 +129,7 @@ public class UserController {
 			System.out.println("Error : " + result );
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('ÀÔ·ÂÀÌ ¾È µÈ »çÇ×ÀÌ ÀÖ½À´Ï´Ù.'); history.back();</script>");
+			out.println("<script>alert('ì…ë ¥ì´ ì•ˆ ëœ ì‚¬í•­ì´ ìˆìŠµë‹ˆë‹¤.'); history.back();</script>");
 			out.flush();
 					
 				}
@@ -134,7 +138,7 @@ public class UserController {
 							System.out.println("Error : " + result );					
 							response.setContentType("text/html; charset=UTF-8");
 				            PrintWriter out = response.getWriter();
-				            out.println("<script>alert('ÀÌ¹Ì Á¸ÀçÇÏ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.'); history.back();</script>");
+				            out.println("<script>alert('ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.'); history.back();</script>");
 							out.flush();
 				           
 						}
@@ -143,7 +147,7 @@ public class UserController {
 							model.addAttribute("id", request.getParameter("userEmail"));
 							response.setContentType("text/html; charset=UTF-8");
 				            PrintWriter out = response.getWriter();
-				            out.println("<script>alert('¼º°øÀûÀ¸·Î °¡ÀÔµÇ¾ú½À´Ï´Ù.');location.href = 'home';</script>");
+				            out.println("<script>alert('ì„±ê³µì ìœ¼ë¡œ ê°€ì…ë˜ì—ˆìŠµë‹ˆë‹¤.');location.href = 'home';</script>");
 							out.flush();
 							
 						} 
