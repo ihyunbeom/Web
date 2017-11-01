@@ -13,6 +13,7 @@ import com.spring.bbs.command.BbsCommand;
 import com.spring.bbs.command.BbsDeleteCommand;
 import com.spring.bbs.command.BbsListCommand;
 import com.spring.bbs.command.BbsUpdateCommand;
+import com.spring.bbs.command.BbsUpdateViewCommand;
 import com.spring.bbs.command.BbsViewCommand;
 import com.spring.bbs.command.BbsWriteCommand;
 
@@ -72,7 +73,7 @@ public class BbsController {
 		int bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		model.addAttribute("request", request);
 		System.out.println("BbsID : " + bbsID);
-		command = new BbsViewCommand(bbsID);
+		command = new BbsUpdateViewCommand(bbsID);
 		command.execute(model);
 		
 		

@@ -27,6 +27,8 @@ public class BbsViewCommand implements BbsCommand {
 		
 		System.out.println("(Command)BbsTitle : " + bbsDTO.getBbsTitle());
 		
+		bbsDTO.setBbsContent(bbsDTO.getBbsContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\\r\\n","<br>"));
+		//System.out.println(bbsDTO.getBbsContent());
 		model.addAttribute("view",bbsDTO);
 		
 	}

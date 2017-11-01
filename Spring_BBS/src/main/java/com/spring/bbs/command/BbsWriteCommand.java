@@ -28,7 +28,8 @@ public class BbsWriteCommand implements BbsCommand {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		String bbsTitle = request.getParameter("bbsTitle");
 		String bbsContent = request.getParameter("bbsContent");
-			
+		
+		//System.out.println("Write String : " + bbsContent);
 		
 		BbsDAO bbs = new BbsDAO();
 		bbs.write( bbsTitle, userEmail, bbsContent);

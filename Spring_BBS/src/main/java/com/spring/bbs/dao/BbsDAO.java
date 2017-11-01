@@ -94,6 +94,7 @@ public class BbsDAO {
 	
 	public int write(String bbsTitle, String userEmail, String bbsContent){
 		String SQL = "INSERT INTO BBS VALUES (?, ?, ?, ?, ?, ?)";
+		
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1,  getNext());
@@ -126,7 +127,6 @@ public class BbsDAO {
 				String bbsContent = rs.getString("bbsContent");				
 				int bbsAvailable = rs.getInt("bbsAvailable");
 				
-				
 				bbsDTO = new BbsDTO(bbsID, bbsTitle, userEmail, bbsCreated, bbsContent, bbsAvailable);
 				System.out.println("(DAO)BbsTitle : " + bbsDTO.getBbsTitle());
 				
@@ -152,11 +152,11 @@ public class BbsDAO {
 		return -1; 
 	}
 	
-	public int delete(int bbsID){
+	public int delete(String bbsID){
 		String SQL = "UPDATE BBS SET bbsAvailable = 0 WHERE bbsID = ?";
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1,  bbsID);
+			pstmt.setString(1,  bbsID);
 			
 			return pstmt.executeUpdate();
 		}catch(Exception e){
@@ -164,43 +164,5 @@ public class BbsDAO {
 		}
 		return -1; 
 	}
-	
-	/*
-	public BbsDTO contentView(String strID) {
-		// TODO Auto-generated method stub
-		String SQL = "SELECT * from BBS where bbsID = ?";
-		BbsDTO bbsDTO = null;
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, Integer.parseInt(strID));
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				
-				int bbsID = rs.getInt("bbsID");
-				String bbsTitle = rs.getString("bbsTitle");
-				String userEmail = rs.getString("userEmail");
-				String bbsCreated = rs.getString("bbsCreated");
-				String bbsContent = rs.getString("bbsContent");
-				int bbsAvailable = rs.getInt("bbsAvailable");
-				
-				bbsDTO = new BbsDTO(bbsID, bbsTitle, userEmail, bbsCreated, bbsContent, bbsAvailable);
-				
-				bbsDTO.setBbsID(rs.getInt(1));
-				bbsDTO.setBbsTitle(rs.getString(2));
-				bbsDTO.setUserEmail(rs.getString(3));
-				bbsDTO.setBbsCreated(rs.getString(4));
-				bbsDTO.setBbsContent(rs.getString(5));
-				bbsDTO.setBbsAvailable(rs.getInt(6));
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} 
-		return bbsDTO;
-	}
-	*/
 
-	
 }

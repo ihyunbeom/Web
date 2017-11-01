@@ -28,8 +28,8 @@ public class BbsUpdateCommand implements BbsCommand {
 		
 		String bbsTitle = request.getParameter("bbsTitle");
 		String bbsContent = request.getParameter("bbsContent");
-		
 		String bbsEmail = request.getParameter("bbsEmail");//bbs userEmail
+		
 		
 		//System.out.println(bbsContent);
 		System.out.println("userEmail : "+userEmail+" "+"bbsEmail : "+ bbsEmail);
