@@ -67,6 +67,7 @@
 				</div>
 		</nav>
 		session id : ${id}
+		
 		<div class="container">
 				<div class="row">
 					<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
@@ -98,16 +99,41 @@
 							</tbody>						
 					</table>
 					
+	                   <div class="comments-list">
+	                   		<c:forEach items="${list}" var="dto">
+		                       <div class="media">
+		                           <p class="pull-right"><small>5 days ago</small></p>
+		                            <a class="media-left" href="#">
+		                            </a>
+		                            <div class="media-body">
+		                              <strong>이현범</strong>
+		                              <p>&nbsp;&nbsp;&nbsp;Wow! this is really great.</p>
+		                            </div>
+		                          </div>
+	                          </c:forEach>
+	                   </div>
 					
-					<form method="post" action="update">
-						<a href="list" class="btn btn-primary">목록</a>
-						
-						
+					
+					<form method="post" action="reply">
+						<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+							<tbody>
+									<tr>										
+											<td><textarea class="form-control" placeholder="댓글을 적어주세요." name="bbsReply" maxlength="1024" style="height: 50px;"></textarea></td>
+									</tr>
+							</tbody>						
+						</table>
+						<input type="submit" class="btn btn-primary pull-right" value="댓글추가">
+				
+					</form>
+					
+					<form method="post" action="update">	
+					<a href="list" class="btn btn-primary">목록</a>
 						<c:if test="${sessionScope.id == view.userEmail}">
 							<a href="update?bbsID=${view.bbsID}" class="btn btn-primary">수정</a>
 							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="delete?bbsID=${view.bbsID}" class="btn btn-primary">삭제</a>
 	    				</c:if>
     				</form>
+    				
 				</div>
 		</div>
 		
