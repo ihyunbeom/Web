@@ -38,72 +38,24 @@ PRIMARY KEY(replyId)
 INSERT INTO USER VALUES('ccc@ccc','ccc','CCC','male','2017-10-27','010-1234-5678');
 
 
+
 ALTER DATABASE spring_bbs DEFAULT CHARACTER SET UTF8;
+
 ALTER TABLE string_bbs CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 
 show variables like 'c%';
 
+
 INFORMATION_SCHEMA.TABLES or SHOW CREATE TABLE [bbs];
+
 
 
 
 cd /usr/local/mysql/bin
 
 ./mysql -u root -p
-____________________________my.cnf
 
-[mysql]
-
-default-character-set = utf8
-
-
-
-[mysqld]
-
-character-set-client-handshake=FALSE
-
-init_connect="SET collation_connection = utf8_general_ci"
-
-init_connect="SET NAMES utf8"
-
-default-character-set = utf8
-
-character-set-server = utf8
-
-collation-server = utf8_general_ci
-
-
-
-datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
-
-user=mysql
-
-# Disabling symbolic-links is recommended to prevent assorted security risks
-
-symbolic-links=0
-
-
-
-[client]
-
-default-character-set = utf8
-
-
-
-[mysqldump]
-
-default-character-set = utf8
-
-
-
-[mysqld_safe]
-
-log-error=/var/log/mysqld.log
-
-pid-file=/var/run/mysqld/mysqld.pid
-
-____________________________
 
 
 
@@ -133,14 +85,23 @@ FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
 
 
 $ sudo rm /usr/local/mysql 
+
 $ sudo rm -rf /usr/local/mysql* 
+
 $ sudo rm -rf /Library/StartupItems/MySQLCOM 
+
 $ sudo rm -rf /Library/PreferencePanes/My* 
+
 $ sudo rm -rf /Library/LaunchDaemons/com.microsoft.office.licensing.helper.plist 
+
 $ sudo rm -rf /private/var/db/receipts/*mysql*
+
 $ rm -rf ~/Library/PreferencePanes/My* 
+
 $ sudo rm -rf /Library/Receipts/mysql* 
+
 $ sudo rm -rf /Library/Receipts/MySQL* 
+
 $ sudo rm -rf /var/db/receipts/com.mysql.* 
 
 
