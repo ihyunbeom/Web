@@ -1,0 +1,30 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+  text-align: center;
+  color: white;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.banner {
+  height: 350px;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 20%;
+  min-width: 30%;
+  background-image: url("../images/banner.jpg");
+  background-size: cover;
+}
+
+
+.jum {
+  height: 350px;
+  color: white;
+  text-shadow: #444 0 1px 1px;
+  background:transparent;
+}
