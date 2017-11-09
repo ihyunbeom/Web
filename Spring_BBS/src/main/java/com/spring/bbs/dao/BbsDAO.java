@@ -11,8 +11,6 @@ import javax.sql.DataSource;
 
 import com.spring.bbs.dto.BbsDTO;
 
-
-
 public class BbsDAO {
 	
 	private Connection conn;
@@ -60,14 +58,14 @@ public class BbsDAO {
 	}
 	
 	
-	public ArrayList<BbsDTO> getList() {
+	public ArrayList<BbsDTO> getList(int pageNumber) {
 		
 		ArrayList<BbsDTO> listDTO = new ArrayList<BbsDTO>();
 		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
 		try {
 			
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1,  getNext());
+			pstmt.setInt(1,  getNext() - (pageNumber - 1) * 10);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				
@@ -163,6 +161,21 @@ public class BbsDAO {
 			e.printStackTrace();
 		}
 		return -1; 
+	}
+	
+	public boolean nextPage(int pageNumber){
+		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1";
+		try{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1,  getNext() - (pageNumber - 1) * 10);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				return true;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

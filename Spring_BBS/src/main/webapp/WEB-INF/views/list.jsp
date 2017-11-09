@@ -17,6 +17,7 @@
 				if(session.getAttribute("id") != null){
 					userID = (String) session.getAttribute("id");
 				}
+				
 		%>
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
@@ -33,7 +34,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 								<li><a href="home">HOME</a></li>
-								<li><a href="list">공지사항</a></li>
+								<li><a href="list?pageNumber=1">공지사항</a></li>
 						</ul>
 						<%
 								if(userID == null){
@@ -92,6 +93,22 @@
 										</c:forEach>
 								</tbody>
 						</table>
+						<c:choose>
+						    <c:when test="${pageNumber ne 1}">
+						        <a href="list?pageNumber=${pageNumber - 1}" class="btn btn-success btn-arraw-left">이전</a>
+						    </c:when>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${pageNumber ne nextPage}">
+						        <a href="list?pageNumber=${nextPage}" class="btn btn-success btn-arraw-left">다음</a>
+						    </c:when>
+						</c:choose>
+						      	
+						
+						
+
+						
 						<%
 								if(userID != null){
 						%>

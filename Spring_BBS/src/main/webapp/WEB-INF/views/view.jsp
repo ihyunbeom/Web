@@ -33,7 +33,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 								<li><a href="home">HOME</a></li>
-								<li><a href="list">공지사항</a></li>
+								<li><a href="list?pageNumber=1">공지사항</a></li>
 						</ul>
 						<%
 								if(userID == null){
@@ -129,7 +129,7 @@
 					</form>
 					
 					<form method="post" action="update">	
-					<a href="list" class="btn btn-primary">목록</a>
+					<a href="list?pageNumber=1" class="btn btn-primary">목록</a>
 						<c:if test="${sessionScope.id == view.userEmail}">
 							<a href="update?bbsID=${view.bbsID}" class="btn btn-primary">수정</a>
 							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="delete?bbsID=${view.bbsID}" class="btn btn-primary">삭제</a>

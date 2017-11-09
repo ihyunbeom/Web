@@ -31,8 +31,8 @@
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-								<li><a href="home">메인</a></li>
-								<li class="active"><a href="list">게시판</a></li>
+								<li><a href="home">HOME</a></li>
+								<li class="active"><a href="list?pageNumber=1">공지사항</a></li>
 						</ul>
 						<%
 								if(userID == null){

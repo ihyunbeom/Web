@@ -24,9 +24,18 @@ public class BbsController {
 	BbsCommand command = null;
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
+	public String list(HttpServletRequest request, Model model) {
 		System.out.println("list()");
-		command = new BbsListCommand();
+		
+		model.addAttribute("request", request);
+		
+		int pageNumber = 1;
+		
+		if(Integer.parseInt(request.getParameter("pageNumber")) != pageNumber){
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+			//System.out.println("pageNumber = " + Integer.parseInt(request.getParameter("pageNumber")));
+		}
+		command = new BbsListCommand(pageNumber);
 		command.execute(model);
 		
 		return "list";
@@ -49,14 +58,13 @@ public class BbsController {
 		command.execute(model);
 		
 		
-		return "redirect:/list";
+		return "redirect:/list?pageNumber=1";
 	}
 	
 	@RequestMapping("/view")
 	public String content_view(HttpServletRequest request, Model model){
 		System.out.println("view()");
 		
-		HttpSession ses=request.getSession();
 		model.addAttribute("request", request);
 		int bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		
@@ -93,7 +101,7 @@ public class BbsController {
 		command = new BbsUpdateCommand(ses.getAttribute("id").toString(), bbsID);
 		command.execute(model);
 		
-		return "redirect:list";
+		return "redirect:list?pageNumber=1";
 	}
 	
 	@RequestMapping("/delete")
@@ -104,7 +112,7 @@ public class BbsController {
 		command = new BbsDeleteCommand();
 		command.execute(model);
 		
-		return "redirect:list";
+		return "redirect:list?pageNumber=1";
 	}
 	
 }
