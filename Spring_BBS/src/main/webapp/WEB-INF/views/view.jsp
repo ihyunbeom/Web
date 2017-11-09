@@ -69,7 +69,7 @@
 				</div>
 				</div>
 		</nav>
-		  session id : ${id} 
+		 <!--  <session id : ${id}  -->
 		
 		<div class="container">
 				<div class="row">
@@ -77,6 +77,7 @@
 							
 							<thead>
 									<tr>
+									<br/><br/>
 											<th colspan="3" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
 									</tr>
 							</thead>
