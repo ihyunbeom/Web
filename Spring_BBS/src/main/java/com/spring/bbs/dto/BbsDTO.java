@@ -6,6 +6,7 @@ public class BbsDTO {
 
 	int bbsID;
 	String bbsTitle;
+	String userName;
 	String userEmail;
 	String bbsCreated;
 	String bbsContent;
@@ -15,10 +16,11 @@ public class BbsDTO {
 		
 	}
 	
-	public BbsDTO(int bbsID, String bbsTitle, String userEmail, String bbsCreated, String bbsContent, int bbsAvailable) {
+	public BbsDTO(int bbsID, String bbsTitle, String userName, String userEmail, String bbsCreated, String bbsContent, int bbsAvailable) {
 		
 		this.bbsID = bbsID;
 		this.bbsTitle = bbsTitle;
+		this.userName = userName;
 		this.userEmail = userEmail;
 		this.bbsCreated = bbsCreated;
 		this.bbsContent = bbsContent;
@@ -37,6 +39,12 @@ public class BbsDTO {
 	}
 	public void setBbsTitle(String bbsTitle) {
 		this.bbsTitle = bbsTitle;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getUserEmail() {
 		return userEmail;

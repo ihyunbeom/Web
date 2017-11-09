@@ -18,20 +18,21 @@ PRIMARY KEY(userId)
 CREATE TABLE BBS(
 bbsId int(11),
 bbsTitle varchar(50),
-userEmail varchar(20),
+userName varchar(20),userEmail varchar(20),
 bbsCreated varchar(50),
 bbsContent varchar(2048),
 bbsAvailable int,
 PRIMARY KEY(bbsId)
 );
+//( userName) 추가, (userEmail) 
 
 CREATE TABLE REPLY(
 replyId int(11),
 bbsId int(11),
 userEmail varchar(20),
-bbsCreated varchar(50),
-bbsContent varchar(2048),
-bbsAvailable int,
+userName varchar(20),replyContent varchar(2048),
+replyCreated varchar(50),
+replyAvailable int,
 PRIMARY KEY(replyId)
 );
 

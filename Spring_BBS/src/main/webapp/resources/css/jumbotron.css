@@ -18,8 +18,8 @@ body {
   max-width: 100%;
   min-height: 20%;
   min-width: 30%;
-  background-image: url("../images/banner.jpg");
-  background-size: cover;
+  background-image: url("../images/banner3.jpg");
+  background-size: cover; 
 }
 
 .jumbotron2 {

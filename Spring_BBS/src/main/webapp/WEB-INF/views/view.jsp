@@ -33,7 +33,8 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 								<li><a href="home">HOME</a></li>
-								<li><a href="list?pageNumber=1">공지사항</a></li>
+								<li><a href="intro">학회소개</a></li>
+								<li><a href="list?pageNumber=1">자유게시판</a></li>
 						</ul>
 						<%
 								if(userID == null){
@@ -68,7 +69,7 @@
 				</div>
 				</div>
 		</nav>
-		session id : ${id}
+		  session id : ${id} 
 		
 		<div class="container">
 				<div class="row">
@@ -87,7 +88,7 @@
 									</tr>		
 									<tr>
 											<td>작성자</td>
-											<td colspan="2">${view.userEmail}</td>										
+											<td colspan="2">${view.userName}</td>										
 									</tr>		
 									<tr>
 											<td>작성일자</td>
@@ -102,32 +103,37 @@
 					</table>
 					
 	                   <div class="comments-list">
-	                   		<c:forEach items="${list}" var="dto">
+	                   		<c:forEach items="${reply}" var="dto">
 		                       <div class="media">
-		                           <p class="pull-right"><small>5 days ago</small></p>
+		                           <p class="pull-right"><small>${dto.replyCreated}</small></p>
 		                            <a class="media-left" href="#">
 		                            </a>
 		                            <div class="media-body">
-		                              <strong>이현범</strong>
-		                              <p>&nbsp;&nbsp;&nbsp;Wow! this is really great.</p>
+		                              <strong>${dto.userName}</strong>
+		                              <p>&nbsp;&nbsp;&nbsp;${dto.replyContent}</p>
 		                            </div>
 		                          </div>
 	                          </c:forEach>
 	                   </div>
 					
+					<c:if test="${sessionScope.id != null}">
+						<form method="post" action="reply">
+							<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+								<tbody>
+										<tr>										
+												<td><textarea class="form-control" placeholder="댓글을 적어주세요." name="replyContent" maxlength="1024" style="height: 50px;"></textarea></td>
+										</tr>
+								</tbody>						
+							</table>
+							<input type="hidden" name="bbsID" value="${view.bbsID}">
+							<input type="submit" class="btn btn-primary pull-right" value="댓글추가">
 					
-					<form method="post" action="reply">
-						<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-							<tbody>
-									<tr>										
-											<td><textarea class="form-control" placeholder="댓글을 적어주세요." name="bbsReply" maxlength="1024" style="height: 50px;"></textarea></td>
-									</tr>
-							</tbody>						
-						</table>
-						<input type="submit" class="btn btn-primary pull-right" value="댓글추가">
-				
-					</form>
-					
+						</form>
+					</c:if>
+					<c:if test="${sessionScope.id == null}">
+						로그인 후 댓글을 작성할 수 있습니다.
+						<a href="login">로그인</a>
+					</c:if>
 					<form method="post" action="update">	
 					<a href="list?pageNumber=1" class="btn btn-primary">목록</a>
 						<c:if test="${sessionScope.id == view.userEmail}">

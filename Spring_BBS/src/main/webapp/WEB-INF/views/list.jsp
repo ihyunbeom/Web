@@ -34,7 +34,8 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 								<li><a href="home">HOME</a></li>
-								<li><a href="list?pageNumber=1">공지사항</a></li>
+								<li><a href="intro">학회소개</a></li>
+								<li><a href="list?pageNumber=1">자유게시판</a></li>
 						</ul>
 						<%
 								if(userID == null){
@@ -69,7 +70,8 @@
 				</div>
 				</div>
 		</nav>
-		session id : ${id}
+		<!--  session id : ${id} -->
+		<br/><br/>
 		<div class="container">
 				<div class="row">
 						<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
@@ -85,7 +87,7 @@
 										<c:forEach items="${list}" var="dto">
 										<tr>
 											<td>${dto.bbsID}</td>
-											<td>${dto.userEmail}</td>
+											<td>${dto.userName}</td>
 											<td>
 												<a href="view?bbsID=${dto.bbsID}">${dto.bbsTitle}</a></td>
 											<td>${dto.bbsCreated}</td>

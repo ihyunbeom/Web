@@ -12,6 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.spring.bbs.command.BbsCommand;
 import com.spring.bbs.command.BbsDeleteCommand;
 import com.spring.bbs.command.BbsListCommand;
+import com.spring.bbs.command.BbsReplyCommand;
 import com.spring.bbs.command.BbsUpdateCommand;
 import com.spring.bbs.command.BbsUpdateViewCommand;
 import com.spring.bbs.command.BbsViewCommand;
@@ -46,6 +47,13 @@ public class BbsController {
 		System.out.println("write()");
 		
 		return "write";
+	}
+	
+	@RequestMapping("/intro")
+	public String intro(Model model) {
+		System.out.println("intro()");
+		
+		return "intro";
 	}
 	
 	@RequestMapping("/writeAction")
@@ -113,6 +121,21 @@ public class BbsController {
 		command.execute(model);
 		
 		return "redirect:list?pageNumber=1";
+	}
+	
+	@RequestMapping("/reply")
+	public String reply(HttpServletRequest request, Model model) {
+		System.out.println("reply()");
+		
+		HttpSession ses=request.getSession();
+		int bbsID = Integer.parseInt(request.getParameter("bbsID"));
+		
+		model.addAttribute("request", request);
+		command = new BbsReplyCommand(ses.getAttribute("id").toString(),bbsID);
+		command.execute(model);
+		
+		
+		return "redirect:view?bbsID="+Integer.parseInt(request.getParameter("bbsID"));
 	}
 	
 }
