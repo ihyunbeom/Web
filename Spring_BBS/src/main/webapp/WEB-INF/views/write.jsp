@@ -32,6 +32,15 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 								<li><a href="home">HOME</a></li>
+								<%
+								if(userID != null){
+									if(userID.equals("admin@admin")){
+								%>
+									<li><a href = "admin">관리자페이지</a>
+								<%
+									}
+								}
+								%>
 								<li><a href="intro">학회소개</a></li>
 								<li><a href="list?pageNumber=1">자유게시판</a></li>
 						</ul>

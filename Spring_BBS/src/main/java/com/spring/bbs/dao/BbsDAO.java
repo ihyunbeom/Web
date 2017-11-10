@@ -167,10 +167,15 @@ public class BbsDAO {
 	
 	public int delete(String bbsID){
 		String SQL = "UPDATE BBS SET bbsAvailable = 0 WHERE bbsID = ?";
+		String SQL2 = "UPDATE REPLY SET replyAvailable = 0 WHERE bbsID = ?";
+		
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			PreparedStatement pstmt2 = conn.prepareStatement(SQL2);
 			pstmt.setString(1,  bbsID);
+			pstmt2.setString(1,  bbsID);
 			
+			pstmt2.executeUpdate();
 			return pstmt.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();

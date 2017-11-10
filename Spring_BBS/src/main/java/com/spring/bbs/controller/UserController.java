@@ -40,6 +40,12 @@ public class UserController {
 		return "home";
 	}
 	
+	@RequestMapping("admin")
+	public String admin(Model model) {
+		
+		return "admin";
+	}
+	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		System.out.println("login()");
